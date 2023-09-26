@@ -15,16 +15,16 @@ def makeCagebox():
     while z <= 40:
         while x <= 40:
             while y <= 40:
-                rs.currentLayer("BOXES")
                 makeBox(x, y, z, l, w, h)
                 y += 40
-            rs.currentLayer("CURVES")
-            lines[i] = rs.addLine([[l, ], []])
-            i += 1
             x += 40
             y = 0
         z += 40
         x = 0
         y = 0
+
+    rs.currentlayer("CURVES")
+    x = y = z = 10
+    l = w = h = 30
 
 makeCagebox()
