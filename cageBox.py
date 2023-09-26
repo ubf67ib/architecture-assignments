@@ -59,6 +59,6 @@ def makeCagebox():
         y = 0
         x += 30
 
-#Setting it up to work if the file is run on its own
+#Setting it up to work if the file is run
 if __name__ == "__main__":
     makeCagebox()
