@@ -12,7 +12,7 @@ def makeCagebox():
     rs.addLayer("BOXES", outsideBoxes)
     rs.currentLayer("BOXES")
     rs.deleteLayer(Default)
-    lineColor = rs.createColor(106, 255, 158)
+    lineColor = rs.createColor(0, 0, 255)
     rs.addLayer("CURVES", lineColor)
     slabColor = rs.createColor(118, 114, 217)
     rs.addLayer("SLABS", slabColor)
@@ -29,41 +29,46 @@ def makeCagebox():
         x = 0
         y = 0
 
-    #Now create the lines in between the boxes
+    #Now create the lines in between the boxes. Why do i need so many lines :((((((
     rs.currentlayer("CURVES")
     x = y = z = 0
     l = w = h = 50
+    xOffset = yOffset = zOffset = 50
 
-    #Why are there so many lines I need :((((((
-    while z <= 40:
-        while y <= 40:
-            lines[i] = rs.newLine([[x, y, z], [x+l, y, z]])
-            i =+ 1
-            y += 30
-        y = 0
-        z += 30
-    x = y = z = 0
+    for j in range(2):
+        while z <= zOffset + z:
+            while y <= yOffset + y:
+                lines[i] = rs.newLine([[x, y, z], [x+l, y, z]])
+                i =+ 1
+                y += yOffset
+            y = 0
+            z += zOffset
+        x = y = z = 0
 
-    while z <= 40:
-        while x <= 40:
-            lines[i] = rs.newLine([[x, y, z], [x, y+w, z]])
-            i =+ 1
-            x += 30
-        x = 0
-        z += 30
-    x = y = z = 0
+        while z <= zOffset + z:
+            while x <= xOffset + x:
+                lines[i] = rs.newLine([[x, y, z], [x, y+w, z]])
+                i =+ 1
+                x += xOffset
+            x = 0
+            z += zOffset
+        x = y = z = 0
 
-    while x <= 40:
-        while y <= 40:
-            lines[i] = rs.newLine([[x, y, z], [x, y, z+h]])
-            i =+ 1
-            y += 30
-        y = 0
-        x += 30
-    x = y = z = 0
+        while x <= xOffset + x:
+            while y <= yOffset + y:
+                lines[i] = rs.newLine([[x, y, z], [x, y, z+h]])
+                i =+ 1
+                y += yOffset
+            y = 0
+            x += xOffset
+        x = y = z = 0
+
+        if j == 0:
+            l = w = h = 30
 
     #Now just the two slabs left
     h = 5
+    l = w = 30
     rs.currentLayer("SLABS")
 
     makeBox(x, y, z, l, w, h)
