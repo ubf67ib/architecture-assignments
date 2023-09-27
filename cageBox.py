@@ -14,6 +14,8 @@ def makeCagebox():
     rs.deleteLayer(Default)
     lineColor = rs.createColor(106, 255, 158)
     rs.addLayer("CURVES", lineColor)
+    slabColor = rs.createColor(118, 114, 217)
+    rs.addLayer("SLABS", slabColor)
 
     #Create 8 outer boxes
     while z <= 40:
@@ -27,12 +29,12 @@ def makeCagebox():
         x = 0
         y = 0
 
-    #Now create the 12 lines in between the boxes
+    #Now create the lines in between the boxes
     rs.currentlayer("CURVES")
-    x = y = z = 10
-    l = w = h = 30
+    x = y = z = 0
+    l = w = h = 50
 
-    #Using loops to condense 12 lines of code into 20 lines ;)
+    #Why are there so many lines I need :((((((
     while z <= 40:
         while y <= 40:
             lines[i] = rs.newLine([[x, y, z], [x+l, y, z]])
@@ -58,6 +60,15 @@ def makeCagebox():
             y += 30
         y = 0
         x += 30
+    x = y = z = 0
+
+    #Now just the two slabs left
+    h = 5
+    rs.currentLayer("SLABS")
+
+    makeBox(x, y, z, l, w, h)
+    z += 25
+    makeBox(x, y, z, l, w, h)
 
 #Setting it up to work if the file is run
 if __name__ == "__main__":
