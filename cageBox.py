@@ -4,14 +4,11 @@ from boxmaker import *
 def makeCagebox():
     x = y = z = 0
     l = w = h = 10
-    lines  = []
-    i = 0
 
     #Layers were a part of the assignment
     outsideBoxes = rs.CreateColor(124, 150, 255)
     rs.AddLayer("BOXES", outsideBoxes)
     rs.CurrentLayer("BOXES")
-    rs.DeleteLayer(Default)
     lineColor = rs.CreateColor(0, 0, 255)
     rs.AddLayer("CURVES", lineColor)
     slabColor = rs.CreateColor(118, 114, 217)
@@ -29,53 +26,56 @@ def makeCagebox():
         x = y = 0
 
     #Now create the lines in between the boxes. Why do i need so many lines :((((((
-    rs.Currentlayer("CURVES")
+    rs.CurrentLayer("CURVES")
     x = y = z = 0
     l = w = h = 50
     offset1 = offset2 = 50
 
-    for j in range(3):
-        while z <= offset2 + z:
-            while y <= offset1 + y:
-                lines[i] = rs.AddLine([x, y, z], [x+l, y, z])
-                i =+ 1
+    for i in range(3):
+        zBuf = z
+        while z <= offset2 + zBuf:
+            yBuf = y
+            while y <= offset1 + yBuf:
+                rs.AddLine([x, y, z], [x+l, y, z])
                 y += offset1
             y = 0
             z += offset2
             
-        if j == 1:
+        if i == 1:
             x, y, z = 10, 10, 0
-        elif j == 2:
+        elif i == 2:
             x, y, z = 0, 10, 10
         else:
             x = y = z = 0
 
-        while z <= offset2 + z:
-            while x <= offset1 + x:
-                lines[i] = rs.AddLine([x, y, z], [x, y+w, z])
-                i =+ 1
+        zBuf = z
+        while z <= offset2 + zBuf:
+            xBuf = x
+            while x <= offset1 + xBuf:
+                rs.AddLine([x, y, z], [x, y+w, z])
                 x += offset1
             x = 0
             z += offset2
         
-        if j == 1:
+        if i == 1:
             x, y, z = 10, 0, 10
-        elif j == 2:
+        elif i == 2:
             x, y, z = 0, 10, 10
         else:
             x = y = z = 0
 
-        while x <= offset2 + x:
-            while y <= offset1 + y:
-                lines[i] = rs.AddLine([x, y, z], [x, y, z+h])
-                i =+ 1
+        xBuf = x
+        while x <= offset2 + xBuf:
+            yBuf = y
+            while y <= offset1 + yBuf:
+                rs.AddLine([x, y, z], [x, y, z+h])
                 y += offset1
             y = 0
             x += offset2
         
-        if j == 1:
+        if i == 1:
             x, y, z = 10, 10, 0
-        elif j == 2:
+        elif i == 2:
             x, y, z = 10, 0, 10
         else:
             x = y = z = 0
