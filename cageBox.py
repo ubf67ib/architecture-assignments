@@ -38,7 +38,7 @@ def makeCagebox():
             while y <= offset1 + yBuf:
                 rs.AddLine([x, y, z], [x+l, y, z])
                 y += offset1
-            y = 0
+            y = yBuf
             z += offset2
             
         if i == 1:
@@ -54,13 +54,13 @@ def makeCagebox():
             while x <= offset1 + xBuf:
                 rs.AddLine([x, y, z], [x, y+w, z])
                 x += offset1
-            x = 0
+            x = xBuf
             z += offset2
         
         if i == 1:
-            x, y, z = 10, 0, 10
-        elif i == 2:
             x, y, z = 0, 10, 10
+        elif i == 2:
+            x, y, z = 10, 0, 10
         else:
             x, y, z = 0, 0, 0
 
@@ -70,7 +70,7 @@ def makeCagebox():
             while y <= offset1 + yBuf:
                 rs.AddLine([x, y, z], [x, y, z+h])
                 y += offset1
-            y = 0
+            y = yBuf
             x += offset2
         
         if i == 1:
