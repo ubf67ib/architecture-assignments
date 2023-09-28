@@ -8,14 +8,14 @@ def makeCagebox():
     i = 0
 
     #Layers were a part of the assignment
-    outsideBoxes = rs.createColor(124, 150, 255)
-    rs.addLayer("BOXES", outsideBoxes)
-    rs.currentLayer("BOXES")
-    rs.deleteLayer(Default)
-    lineColor = rs.createColor(0, 0, 255)
-    rs.addLayer("CURVES", lineColor)
-    slabColor = rs.createColor(118, 114, 217)
-    rs.addLayer("SLABS", slabColor)
+    outsideBoxes = rs.CreateColor(124, 150, 255)
+    rs.AddLayer("BOXES", outsideBoxes)
+    rs.CurrentLayer("BOXES")
+    rs.DeleteLayer(Default)
+    lineColor = rs.CreateColor(0, 0, 255)
+    rs.AddLayer("CURVES", lineColor)
+    slabColor = rs.CreateColor(118, 114, 217)
+    rs.AddLayer("SLABS", slabColor)
 
     #Create 8 outer boxes
     while z <= 40:
@@ -29,7 +29,7 @@ def makeCagebox():
         x = y = 0
 
     #Now create the lines in between the boxes. Why do i need so many lines :((((((
-    rs.currentlayer("CURVES")
+    rs.Currentlayer("CURVES")
     x = y = z = 0
     l = w = h = 50
     offset1 = offset2 = 50
@@ -37,7 +37,7 @@ def makeCagebox():
     for j in range(3):
         while z <= offset2 + z:
             while y <= offset1 + y:
-                lines[i] = rs.newLine([[x, y, z], [x+l, y, z]])
+                lines[i] = rs.AddLine([x, y, z], [x+l, y, z])
                 i =+ 1
                 y += offset1
             y = 0
@@ -52,7 +52,7 @@ def makeCagebox():
 
         while z <= offset2 + z:
             while x <= offset1 + x:
-                lines[i] = rs.newLine([[x, y, z], [x, y+w, z]])
+                lines[i] = rs.AddLine([x, y, z], [x, y+w, z])
                 i =+ 1
                 x += offset1
             x = 0
@@ -67,7 +67,7 @@ def makeCagebox():
 
         while x <= offset2 + x:
             while y <= offset1 + y:
-                lines[i] = rs.newLine([[x, y, z], [x, y, z+h]])
+                lines[i] = rs.AddLine([x, y, z], [x, y, z+h])
                 i =+ 1
                 y += offset1
             y = 0
@@ -85,7 +85,7 @@ def makeCagebox():
 
     #Now just the two slabs left
     l, w, h = 30, 30, 5
-    rs.currentLayer("SLABS")
+    rs.CurrentLayer("SLABS")
 
     makeBox(x, y, z, l, w, h)
     z += 25
