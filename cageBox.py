@@ -34,7 +34,7 @@ def makeCagebox():
     l = w = h = 50
     offset1 = offset2 = 50
 
-    for j in range(2):
+    for j in range(3):
         while z <= offset2 + z:
             while y <= offset1 + y:
                 lines[i] = rs.newLine([[x, y, z], [x+l, y, z]])
@@ -45,6 +45,8 @@ def makeCagebox():
             
         if j == 1:
             x, y, z = 10, 10, 0
+        elif j == 2:
+            x, y, z = 0, 10, 10
         else:
             x = y = z = 0
 
@@ -58,6 +60,8 @@ def makeCagebox():
         
         if j == 1:
             x, y, z = 10, 0, 10
+        elif j == 2:
+            x, y, z = 0, 10, 10
         else:
             x = y = z = 0
 
@@ -71,6 +75,8 @@ def makeCagebox():
         
         if j == 1:
             x, y, z = 10, 10, 0
+        elif j == 2:
+            x, y, z = 10, 0, 10
         else:
             x = y = z = 0
 
