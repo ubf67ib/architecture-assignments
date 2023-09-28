@@ -32,6 +32,14 @@ def makeCagebox():
     offset1, offset2 = 50, 50
 
     for i in range(3):
+        
+        if i == 1:
+            x, y, z = 10, 10, 0
+        elif i == 2:
+            x, y, z = 10, 0, 10
+        else:
+            x, y, z = 0, 0, 0
+
         zBuf = z
         while z <= offset2 + zBuf:
             yBuf = y
@@ -73,13 +81,6 @@ def makeCagebox():
             y = yBuf
             x += offset2
         
-        if i == 1:
-            x, y, z = 10, 10, 0
-        elif i == 2:
-            x, y, z = 10, 0, 10
-        else:
-            x, y, z = 0, 0, 0
-
         l, w, h = 30, 30, 30
         offset1 = 30
 
