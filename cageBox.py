@@ -2,8 +2,8 @@ from boxmaker import *
 
 #It's a function because reasons
 def makeCagebox():
-    x = y = z = 0
-    l = w = h = 10
+    x, y, z = 0
+    l, w, h = 10
 
     #Layers were a part of the assignment
     outsideBoxes = rs.CreateColor(124, 150, 255)
@@ -23,12 +23,12 @@ def makeCagebox():
             x += 40
             y = 0
         z += 40
-        x = y = 0
+        x, y = 0
 
     #Now create the lines in between the boxes. Why do i need so many lines :((((((
     rs.CurrentLayer("CURVES")
-    x = y = z = 0
-    l = w = h = 50
+    x, y, z = 0
+    l, w, h = 50
     offset1 = offset2 = 50
 
     for i in range(3):
@@ -46,7 +46,7 @@ def makeCagebox():
         elif i == 2:
             x, y, z = 0, 10, 10
         else:
-            x = y = z = 0
+            x, y, z = 0
 
         zBuf = z
         while z <= offset2 + zBuf:
@@ -62,7 +62,7 @@ def makeCagebox():
         elif i == 2:
             x, y, z = 0, 10, 10
         else:
-            x = y = z = 0
+            x, y, z = 0
 
         xBuf = x
         while x <= offset2 + xBuf:
@@ -78,13 +78,14 @@ def makeCagebox():
         elif i == 2:
             x, y, z = 10, 0, 10
         else:
-            x = y = z = 0
+            x, y, z = 0
 
-        l = w = h = 30
+        l, w, h = 30
         offset1 = 30
 
     #Now just the two slabs left
     l, w, h = 30, 30, 5
+    x, y, z = 10
     rs.CurrentLayer("SLABS")
 
     makeBox(x, y, z, l, w, h)
