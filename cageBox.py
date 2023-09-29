@@ -80,9 +80,13 @@ def makeCagebox():
                 y += offset1
             y = yBuf
             x += offset2
-        
-        l, w, h = 30, 30, 30
-        offset1 = 30
+
+        if i == 0:
+            l, w, h = 30, 30, 30
+            offset1 = 30
+        if i == 1:
+            offset1 = 50
+            offset2 = 30
 
     #Now just the two slabs left
     l, w, h = 30, 30, 5
