@@ -5,7 +5,7 @@ def makeCagebox():
     x, y, z = 0, 0, 0
     l, w, h = 10, 10, 10
 
-    #Layers were a part of the assignment
+    #Layers are a part of the assignment
     outsideBoxes = rs.CreateColor(124, 150, 255)
     rs.AddLayer("BOXES", outsideBoxes)
     rs.CurrentLayer("BOXES")
