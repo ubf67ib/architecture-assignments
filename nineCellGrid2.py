@@ -1,4 +1,4 @@
-import rhinoscriptsynax as rs
+import rhinoscriptsyntax as rs
 from boxmaker import *
 
 #TODO: Make this user inputted
