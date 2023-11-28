@@ -1,9 +1,6 @@
 import rhinoscriptsyntax as rs
+import Rhino
 from boxmaker import *
-
-#There's no split by plane, so this function will be useful later
-def planeToBrep(plane):
-
 
 #I can't be bothered to make it object oriented
 def makeBox():
@@ -28,7 +25,7 @@ def makeBox():
     #TODO: make this user imputted
     splitNumbers = [[6, 12], [4, 10], [8, 14]]
 
-    pl
+    planes = {0:{}, 1:{}, 2:{}}
     for i in splitNumbers[0]:
         planes[0][i] = rs.PlaneFromNormal(lines[0][i], [1, 0, 0])
     for i in splitNumbers[1]:
@@ -37,11 +34,13 @@ def makeBox():
         planes[2][i] = rs.PlaneFromNormal(lines[2][i], [0, 0, 1])
 
     #Now make the planes into breps because you can't split by plane
+    planeSrfs = {0:{}, 1:{}, 2:{}}
+    planeBreps = {0:{}, 1:{}, 2:{}}
     i = 0
-    while i < len(planes):
+    for i in planes.keys:
         for j in planes[i]:
-            planeSrfs[i][]
-        i += 1
+            planeSrfs[i][j] = rs.AddPlaneSurface(planes[i][j], 1, 1)
+            planeBreps[i][j] = Rhino.Geometry.Brep.CreateFromSurface(planeSrfs[i][j])
 
 if __name__ == "__main__":
     makeBox()
